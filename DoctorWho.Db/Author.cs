@@ -6,8 +6,7 @@ namespace DoctorWho.Db
     {
         public int AuthorId { get; set; }
 
-        [Column("AuthorName")]
-        public string Name { get; set; }
+        public string AuthorName { get; set; }
 
         public List<Episode> Episodes { get; set; }
 
