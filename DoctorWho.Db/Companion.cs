@@ -9,8 +9,7 @@ namespace DoctorWho.Db
         }  
         public int CompanionId { get; set; }
 
-        [Column("CompanionName")]
-        public string Name { get; set;}
+        public string CompanionName { get; set;}
 
         public string WhoPlayed { get; set;}
 
