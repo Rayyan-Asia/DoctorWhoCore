@@ -7,14 +7,26 @@ namespace DoctorWho.Db
         public DbSet<Doctor> Doctors { get; set; }
         public DbSet<Enemy> Enemies { get; set; }  
         public DbSet<Companion> Companions { get; set; }
-        public DbSet<Episode> episodes { get; set; }    
+        public DbSet<Episode> Episodes { get; set; }    
         public DbSet<Author> Authors { get; set; }
+        public DbSet<EnemyEpisode> EnemyEpisodes { get; set; }
 
+        public DbSet<CompanionEpisode> CompanionEpisodes { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            base.OnConfiguring(optionsBuilder);
             optionsBuilder.UseSqlServer("Data Source = (LocalDb)\\localDb; Initial Catalog = DoctorWhoCore");
         }
+        
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            
+            var modelManager = new ModelManager(modelBuilder);
+            modelManager.SetShadowProperties();
+            modelManager.SetupManytoManyRelationships();
+            modelManager.SeedData();
+            
+        }
+        
     }
 }

@@ -8,7 +8,7 @@ namespace DoctorWho.Db
 
         public string AuthorName { get; set; }
 
-        public List<Episode> Episodes { get; set; }
+        public List<Episode>? Episodes { get; set; }
 
         public Author() {
             Episodes = new List<Episode>();

@@ -11,8 +11,8 @@
         public Author Author { get; set; }
         public int AuthorId { get; set; }
 
-        public Doctor Doctor { get; set; }
-        public int DoctorId { get; set; }
+        public Doctor? Doctor { get; set; }
+        public int? DoctorId { get; set; }
         public string Notes { get; set; }
         public List<Enemy> Enemies { get; set; }
         public List<Companion> Companions { get; set; }
