@@ -1,4 +1,5 @@
 ﻿using System.Reflection.Emit;
+using DoctorWhoDomain;
 using Microsoft.EntityFrameworkCore;
 
 namespace DoctorWho.Db
@@ -253,6 +254,11 @@ namespace DoctorWho.Db
                                 ee.HasKey(a => new { a.EpisodeId, a.EnemyId });
                             }
                         );
+        }
+
+        public void MapViews()
+        {
+            _modelBuilder.Entity<ViewEpisodes>().HasNoKey().ToView("viewEpisodes");
         }
     }
 }
