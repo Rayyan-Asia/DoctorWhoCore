@@ -16,7 +16,7 @@ namespace DoctorWho.Db.Repositories.Implementations
             await _context.SaveChangesAsync();
             return enemy;
         }
-        public async Task<Enemy> UpdateEnemy(Enemy updatedEnemy)
+        public async Task<Enemy> UpdateEnemyAsync(Enemy updatedEnemy)
         {
             var originalEnemy = await _context.Enemies.FindAsync(updatedEnemy.EnemyId);
             if (originalEnemy == null)

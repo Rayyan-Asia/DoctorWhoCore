@@ -5,6 +5,6 @@
         Task<Companion> CreateCompanionAsync(Companion companion);
         Task<Companion> GetCompanionWithIdAsync(int companionId);
         Task RemoveCompanionAsync(Companion companionToRemove);
-        Task<Companion> UpdateCompanion(Companion updatedCompanion);
+        Task<Companion> UpdateCompanionAsync(Companion updatedCompanion);
     }
 }

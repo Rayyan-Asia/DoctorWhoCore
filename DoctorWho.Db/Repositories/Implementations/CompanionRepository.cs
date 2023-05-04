@@ -17,7 +17,7 @@ namespace DoctorWho.Db
             await _context.SaveChangesAsync();
             return companion;
         }
-        public async Task<Companion> UpdateCompanion(Companion updatedCompanion)
+        public async Task<Companion> UpdateCompanionAsync(Companion updatedCompanion)
         {
             var originalCompanion = await _context.Companions.FindAsync(updatedCompanion.CompanionId);
             if (originalCompanion == null)

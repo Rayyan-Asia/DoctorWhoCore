@@ -7,7 +7,7 @@ namespace DoctorWho
 {
     public class Program
     {
-        DoctorWhoCoreDbContext _context = new DoctorWhoCoreDbContext();
+        DoctorWhoCoreDbContext _context = new();
         static void Main(string[] args)
         {
             using (var context = new DoctorWhoCoreDbContext())
@@ -16,10 +16,8 @@ namespace DoctorWho
                 GetEnemiesFromEpisodeData(1,context);
                 GetEpisodeViewData(context);
                 GetEpisodesSummaryData(context);
-            }
-            
+            }   
         }
-
         private static void GetEpisodesSummaryData(DoctorWhoCoreDbContext context)
         {
             List<Companion> companions = new List<Companion>();

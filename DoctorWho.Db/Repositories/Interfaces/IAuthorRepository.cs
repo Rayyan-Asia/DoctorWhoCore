@@ -4,6 +4,6 @@
     {
         Task<Author> CreateAuthorAsync(Author author);
         Task RemoveAuthorAsync(Author authorToRemove);
-        Task<Author> UpdateAuthor(Author updatedAuthor);
+        Task<Author> UpdateAuthorAsync(Author updatedAuthor);
     }
 }

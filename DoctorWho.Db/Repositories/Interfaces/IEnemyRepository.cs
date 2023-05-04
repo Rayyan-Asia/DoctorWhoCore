@@ -5,6 +5,6 @@
         Task<Enemy> CreateEnemyAsync(Enemy enemy);
         Task<Enemy> GetEnemyWithIdAsync(int enemyId);
         Task RemoveEnemyAsync(Enemy enemyToRemove);
-        Task<Enemy> UpdateEnemy(Enemy updatedEnemy);
+        Task<Enemy> UpdateEnemyAsync(Enemy updatedEnemy);
     }
 }

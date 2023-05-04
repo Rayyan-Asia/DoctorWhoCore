@@ -1,5 +1,7 @@
 ﻿
 
+using Microsoft.EntityFrameworkCore.ChangeTracking.Internal;
+
 namespace DoctorWho.Db
 {
     public class AuthorRepository : IAuthorRepository
@@ -11,7 +13,7 @@ namespace DoctorWho.Db
             await _context.SaveChangesAsync();
             return author;
         }
-        public async Task<Author> UpdateAuthor(Author updatedAuthor)
+        public async Task<Author> UpdateAuthorAsync(Author updatedAuthor)
         {
             var originalAuthor = await _context.Authors.FindAsync(updatedAuthor.AuthorId);
             if (originalAuthor == null)
@@ -20,6 +22,7 @@ namespace DoctorWho.Db
             }
 
             originalAuthor = updatedAuthor;
+
             _context.Authors.Update(originalAuthor);
             await _context.SaveChangesAsync();
             return originalAuthor;

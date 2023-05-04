@@ -17,7 +17,7 @@ namespace DoctorWho.Db.Repositories.Implementations
             await _context.SaveChangesAsync();
             return doctor;
         }
-        public async Task<Doctor> UpdateDoctor(Doctor updatedDoctor)
+        public async Task<Doctor> UpdateDoctorAsync(Doctor updatedDoctor)
         {
             var originalDoctor = await _context.Doctors.FindAsync(updatedDoctor.DoctorId);
             if (originalDoctor == null)
@@ -43,7 +43,7 @@ namespace DoctorWho.Db.Repositories.Implementations
         }
 
 
-        public async Task<List<Doctor>> GetAvailableDoctors()
+        public async Task<List<Doctor>> GetAvailableDoctorsAsync()
         {
             return await _context.Doctors.ToListAsync();
         }

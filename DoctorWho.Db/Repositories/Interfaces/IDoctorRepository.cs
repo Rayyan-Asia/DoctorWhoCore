@@ -3,8 +3,8 @@
     public interface IDoctorRepository
     {
         Task<Doctor> CreateDoctorAsync(Doctor doctor);
-        Task<List<Doctor>> GetAvailableDoctors();
+        Task<List<Doctor>> GetAvailableDoctorsAsync();
         Task RemoveDoctorAsync(Doctor doctorToRemove);
-        Task<Doctor> UpdateDoctor(Doctor updatedDoctor);
+        Task<Doctor> UpdateDoctorAsync(Doctor updatedDoctor);
     }
 }
