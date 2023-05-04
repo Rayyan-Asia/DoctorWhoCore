@@ -12,16 +12,14 @@ namespace DoctorWho.Db
         public DbSet<Episode> Episodes { get; set; }    
         public DbSet<Author> Authors { get; set; }
         public DbSet<EnemyEpisode> EnemyEpisodes { get; set; }
-
         public DbSet<CompanionEpisode> CompanionEpisodes { get; set; }
-
         public DbSet<ViewEpisodes> ViewEpisodes { get; set; }
         public string FnCompanionsResult(int EpisodeId) => throw new NotSupportedException();
         public string FnEnemiesResult(int EpisodeId) => throw new NotSupportedException();
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data Source = (LocalDb)\\localDb; Initial Catalog = DoctorWhoCore")
+            optionsBuilder.UseSqlServer("Data Source = (LocalDb)\\LocalDb; Initial Catalog = DoctorWhoCore")
                 .LogTo(Console.WriteLine, new[] {DbLoggerCategory.Database.Command.Name},LogLevel.Information)
                 .EnableSensitiveDataLogging();
         }
