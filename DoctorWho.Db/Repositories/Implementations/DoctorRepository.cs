@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using DoctorWhoDomain;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,8 +25,7 @@ namespace DoctorWho.Db.Repositories.Implementations
             {
                 throw new Exception("Doctor not found");
             }
-
-            originalDoctor = updatedDoctor;
+            EntityMapper.TransferProperties(updatedDoctor, originalDoctor);
             _context.Doctors.Update(originalDoctor);
             await _context.SaveChangesAsync();
             return originalDoctor;

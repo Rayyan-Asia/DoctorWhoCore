@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using DoctorWhoDomain;
+using Microsoft.EntityFrameworkCore;
 
 namespace DoctorWho.Db;
 public class EpisodeRepository : IEpisodeRepository
@@ -12,12 +13,15 @@ public class EpisodeRepository : IEpisodeRepository
         {
             throw new Exception("Author Does Not Exist");
         }
-
-        var Doctor = await _context.Doctors.FindAsync(episode.DoctorId);
-        if (Doctor == null)
+        if (episode.DoctorId != null)
         {
-            throw new Exception("Doctor Does Not Exist");
+            var Doctor = await _context.Doctors.FindAsync(episode.DoctorId);
+            if (Doctor == null)
+            {
+                throw new Exception("Doctor Does Not Exist");
+            }
         }
+
 
         _context.Episodes.Add(episode);
         await _context.SaveChangesAsync();
@@ -37,13 +41,15 @@ public class EpisodeRepository : IEpisodeRepository
             throw new Exception("Author Does Not Exist");
         }
 
-        var Doctor = await _context.Doctors.FindAsync(updatedEpisode.DoctorId);
-        if (Doctor == null)
+        if (updatedEpisode.DoctorId != null)
         {
-            throw new Exception("Doctor Does Not Exist");
+            var Doctor = await _context.Doctors.FindAsync(updatedEpisode.DoctorId);
+            if (Doctor == null)
+            {
+                throw new Exception("Doctor Does Not Exist");
+            }
         }
-
-        originalEpisode = updatedEpisode;
+        EntityMapper.TransferProperties(updatedEpisode, originalEpisode);
         _context.Episodes.Update(originalEpisode);
         await _context.SaveChangesAsync();
         return updatedEpisode;

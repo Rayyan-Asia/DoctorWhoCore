@@ -1,5 +1,6 @@
 ﻿
 
+using DoctorWhoDomain;
 using Microsoft.EntityFrameworkCore.ChangeTracking.Internal;
 
 namespace DoctorWho.Db
@@ -20,8 +21,7 @@ namespace DoctorWho.Db
             {
                 throw new Exception("Author not found");
             }
-
-            originalAuthor = updatedAuthor;
+            EntityMapper.TransferProperties(updatedAuthor, originalAuthor);
 
             _context.Authors.Update(originalAuthor);
             await _context.SaveChangesAsync();

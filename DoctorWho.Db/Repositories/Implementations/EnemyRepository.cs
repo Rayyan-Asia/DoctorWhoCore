@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using DoctorWhoDomain;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,8 +24,7 @@ namespace DoctorWho.Db.Repositories.Implementations
             {
                 throw new Exception("Enemy not found");
             }
-
-            originalEnemy = updatedEnemy;
+            EntityMapper.TransferProperties(updatedEnemy, originalEnemy);
             _context.Enemies.Update(originalEnemy);
             await _context.SaveChangesAsync();
             return originalEnemy;

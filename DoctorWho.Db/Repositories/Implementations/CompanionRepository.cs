@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using DoctorWhoDomain;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,8 +25,7 @@ namespace DoctorWho.Db
             {
                 throw new Exception("Companion not found");
             }
-
-            originalCompanion = updatedCompanion;
+            EntityMapper.TransferProperties(updatedCompanion, originalCompanion);
             _context.Companions.Update(originalCompanion);
             await _context.SaveChangesAsync();
             return originalCompanion;
